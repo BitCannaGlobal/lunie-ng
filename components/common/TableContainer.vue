@@ -65,9 +65,8 @@ export default {
 <style scoped>
 .container {
   overflow: auto;
-  box-shadow: 0 0 3px 0 var(--gray-400);
   border-radius: var(--border-radius);
-  background: var(--white);
+  background: var(--gray-1100);
 }
 
 table {
@@ -92,6 +91,6 @@ table {
 }
 
 thead {
-  border-bottom: 1px solid var(--bc-dim);
+  border-bottom: 2px solid var(--bc-dim);
 }
 </style>

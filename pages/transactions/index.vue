@@ -1,5 +1,13 @@
 <template>
   <div class="transactions">
+    <div class="header-container">
+      <CommonButton
+        :href="network.explorerURL + '/account/' + session.address"
+        value="View all transactions"
+        :link="true"
+      />
+    </div>
+
     <div v-if="!transactionsLoaded" class="container">
       <CommonLoader />
     </div>
@@ -19,7 +27,35 @@
       />
 
       <div v-if="transactionsLoaded && transactionsLoading" class="loading-row">
-        Loading...
+        <svg
+          width="44"
+          height="44"
+          viewBox="0 0 40 40"
+          xmlns="http://www.w3.org/2000/svg"
+          stroke="#8c8fa6"
+        >
+          <g fill="none" fill-rule="evenodd">
+            <g transform="translate(1 1)" stroke-width="2">
+              <circle
+                stroke="white"
+                stroke-opacity=".2"
+                cx="18"
+                cy="18"
+                r="18"
+              />
+              <path stroke="white" d="M36 18c0-9.94-8.06-18-18-18">
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  from="0 18 18"
+                  to="360 18 18"
+                  dur="1s"
+                  repeatCount="indefinite"
+                />
+              </path>
+            </g>
+          </g>
+        </svg>
       </div>
 
       <template v-if="transactionsLoaded && !moreTransactionsAvailable">
@@ -52,7 +88,7 @@ export default {
     ]),
     ...mapState(['session']),
     oldChainDataMessage() {
-      return `If you're missing transactions from this list 
+      return `If you're missing transactions from this list
       they may have occured before the last blockchain upgrade.`
     },
   },
@@ -69,13 +105,20 @@ export default {
 }
 </script>
 <style scoped>
+.header-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .container {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background: var(--white);
+  background: var(--gray-1100);
   border-radius: var(--border-radius);
-  box-shadow: 0 0 3px 0 var(--gray-400);
   margin: 1rem;
   font-size: 12px;
   color: var(--txt);
@@ -83,5 +126,14 @@ export default {
 
 .container p {
   padding: 2rem;
+}
+
+.button {
+  margin: 1.5rem;
+}
+
+.loading-row svg {
+  display: block;
+  margin: 20px auto 20px auto;
 }
 </style>

@@ -45,7 +45,7 @@ export default {
 .table-container {
   margin: 0 auto;
   width: 100%;
-  padding: 3rem 4rem;
+  padding: 3rem 1.5rem;
 }
 
 .tm-form-msg--desc {

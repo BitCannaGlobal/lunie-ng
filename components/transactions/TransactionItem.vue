@@ -2,7 +2,7 @@
   <div class="tx-container">
     <a
       class="transaction"
-      :href="network.apiURL + '/txs/' + transaction.hash"
+      :href="network.explorerURL + '/transactions/' + transaction.hash"
       target="_blank"
       rel="nofollow noreferrer noopener"
     >
@@ -107,21 +107,57 @@ export default {
           return `Deposit`
         case lunieMessageTypes.VOTE:
           return `Vote`
+        case lunieMessageTypes.SUBMIT_PROPOSAL:
+          return `Proposal`
         case lunieMessageTypes.CLAIM_REWARDS:
           return `Claim Rewards`
+        case lunieMessageTypes.EDIT_VALIDATOR:
+          return `Edit validator`
+        case lunieMessageTypes.CREATE_VALIDATOR:
+          return `Create validator`
+        case lunieMessageTypes.IBC:
+          return `IBC`
+        case lunieMessageTypes.FUND_COMMUNITY_POOL:
+          return `Fund Community Pool`
+        case lunieMessageTypes.UNJAIL:
+          return `Unjail`
         case lunieMessageTypes.UNKNOWN:
-          return this.transaction.rawMessage.type.split('/Msg')[1]
-        /* istanbul ignore next */
+          return this.transaction.rawMessage.message['@type'].split('/')[1]
         default:
           return ``
       }
     },
     imagePath() {
-      try {
-        const imgName = this.transactionCaption.replace(/\s+/g, '')
-        return require(`../../assets/images/transactions/${imgName}.svg`)
-      } catch {
-        return require('../../assets/images/transactions/Unknown.svg')
+      switch (this.transaction.type) {
+        case lunieMessageTypes.SEND:
+          if (this.transaction.details.to.includes(this.session.address)) {
+            return require(`../../assets/images/transactions/Receive.svg`)
+          } else {
+            return require(`../../assets/images/transactions/Send.svg`)
+          }
+        case lunieMessageTypes.STAKE:
+          return require(`../../assets/images/transactions/Stake.svg`)
+        case lunieMessageTypes.RESTAKE:
+          return require(`../../assets/images/transactions/Restake.svg`)
+        case lunieMessageTypes.UNSTAKE:
+          return require(`../../assets/images/transactions/Unstake.svg`)
+        case lunieMessageTypes.DEPOSIT:
+          return require(`../../assets/images/transactions/Deposit.svg`)
+        case lunieMessageTypes.VOTE:
+        case lunieMessageTypes.SUBMIT_PROPOSAL:
+        case lunieMessageTypes.EDIT_VALIDATOR:
+        case lunieMessageTypes.CREATE_VALIDATOR:
+        case lunieMessageTypes.IBC:
+        case lunieMessageTypes.UNJAIL:
+          return require(`../../assets/images/transactions/Proposal.svg`)
+        case lunieMessageTypes.CLAIM_REWARDS:
+          return require(`../../assets/images/transactions/ClaimRewards.svg`)
+        case lunieMessageTypes.FUND_COMMUNITY_POOL:
+          return require(`../../assets/images/transactions/Receive.svg`)
+        case lunieMessageTypes.UNKNOWN:
+          return require(`../../assets/images/transactions/Unknown.svg`)
+        default:
+          return require(`../../assets/images/transactions/Unknown.svg`)
       }
     },
     includesValidatorAddresses() {
@@ -151,13 +187,12 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--app-bg);
+  background: var(--gray-1100);
   border-radius: var(--border-radius);
   z-index: 90;
   padding: 0.75rem 1rem;
-  margin: 1rem 1rem 0 1rem;
+  margin: 1rem 1.5rem 0 1.5rem;
   cursor: pointer;
-  box-shadow: 0 0 1px 0 var(--gray-500);
 }
 
 .icon {
@@ -170,7 +205,7 @@ export default {
 }
 
 .transaction:hover {
-  background: var(--gray-100);
+  background: var(--gray-1300);
 }
 
 .left {
@@ -185,7 +220,7 @@ export default {
 }
 
 .title-and-images p {
-  color: var(--dim);
+  color: var(--gray-500);
   padding: 0 2rem 0 1rem;
   font-size: var(--text-xs);
   word-break: break-all;
@@ -224,14 +259,12 @@ h3 {
   width: 1.25rem;
   margin: 0 0.5rem 0 0;
   border-radius: 50%;
-  box-shadow: 0 0 3px 0 var(--gray-500);
 }
 
 .launch {
   z-index: 91;
   cursor: pointer;
   border-radius: 50%;
-  background: var(--gray-300);
   display: flex;
   align-items: center;
   justify-content: center;

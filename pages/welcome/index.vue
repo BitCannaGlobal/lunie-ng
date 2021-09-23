@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Welcome 👋</h1>
+    <h1>Welcome to BCNA</h1>
     <h2>{{ network.description }}</h2>
     <div class="session-list">
       <AddressLiSession
@@ -38,6 +38,14 @@
           route="/recover"
         />
       </template>
+      <template v-if="network.swapEnabled">
+        <AddressLiSession
+          icon="compare_arrows"
+          title="Swap"
+          route="/signout-swap"
+        />
+      </template>
+      <a v-if="session" class="link" @click="backToWallet">Back to wallet</a>
       <a v-if="session" class="link" @click="signOut">Sign out</a>
       <a v-else class="link" @click="signOut">Continue without address</a>
     </div>
@@ -66,6 +74,9 @@ export default {
       this.$store.dispatch('signIn', undefined)
       this.$router.push('/validators')
     },
+    backToWallet() {
+      this.$router.push('/')
+    },
   },
 }
 </script>
@@ -75,6 +86,7 @@ h1 {
   font-size: var(--text-3xl);
   text-align: center;
   padding-bottom: 1.5rem;
+  color: var(--green-1000);
 }
 
 h2 {
@@ -97,9 +109,9 @@ h4 {
 }
 
 .link {
-  display: flex;
+  display: inline-block;
   font-size: var(--text-sm);
-  padding: 1rem 2rem 0;
+  padding: 1rem 1rem;
   text-decoration: underline;
 }
 </style>

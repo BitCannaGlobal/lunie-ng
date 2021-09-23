@@ -206,9 +206,8 @@ export default {
   font-size: 14px;
   max-width: 1024px;
   margin: 0 auto 2rem;
-  box-shadow: 0 0 3px 0 var(--gray-400);
   border-radius: var(--border-radius);
-  background: var(--white);
+  background: var(--gray-1200);
 }
 
 .top {
@@ -257,9 +256,8 @@ export default {
   color: var(--txt);
   font-size: 12px;
   letter-spacing: 0.5px;
-  box-shadow: 0 0 3px 0 var(--gray-400);
   border-radius: var(--border-radius);
-  background: var(--white);
+  background: var(--gray-1100);
 }
 
 .vote-box:last-child {

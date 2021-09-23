@@ -109,9 +109,8 @@ export default {
 .participant-list {
   margin: 0 auto;
   width: 100%;
-  box-shadow: 0 0 3px 0 var(--gray-400);
   border-radius: var(--border-radius);
-  background: var(--white);
+  background: var(--gray-1100);
   overflow: auto;
 }
 
@@ -135,7 +134,7 @@ h4 {
 }
 
 .participant.isValidator:hover {
-  background: var(--gray-100);
+  background: var(--gray-1200);
   cursor: pointer;
 }
 

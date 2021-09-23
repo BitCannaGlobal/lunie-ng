@@ -48,9 +48,8 @@ export default {
   margin: 0 auto 1rem;
   display: block;
   width: 100%;
-  box-shadow: 0 0 3px 0 var(--gray-400);
   border-radius: var(--border-radius);
-  background: var(--white);
+  background: var(--gray-1100);
 }
 
 h3 {

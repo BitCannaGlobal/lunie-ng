@@ -2,7 +2,7 @@ export default {
   // Build the app as a static site instead of Server Side Rendered (SSR)
   // (https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-mode/)
   ssr: false,
-  target: 'static',
+  target: 'server',
 
   // Use local 404 instead of redirecting to Netlify 404 (https://go.nuxtjs.dev/config-build)
   generate: {
@@ -11,7 +11,7 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'Lunie 3',
+    title: 'Bitcanna Wallet',
     htmlAttrs: {
       lang: 'en',
     },
@@ -22,10 +22,28 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          'Lunie 3 is a simple staking and governance interface for proof-of-stake blockchains',
+          'The Cannabis Blockchain project which is powered by the Industry. BitCanna will provide a decentralized payment network for the legal cannabis industry.',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/cropped-apple-touch-icon-32x32.png',
+        sizes: '32x32',
+      },
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/cropped-apple-touch-icon-192x192.png',
+        sizes: '192x192',
+      },
+      {
+        rel: 'apple-touch-icon',
+        type: 'image/x-icon',
+        href: '/cropped-apple-touch-icon-180x180.png',
+      },
+    ],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -39,6 +57,7 @@ export default {
     '@/plugins/init.client.js',
     '@/plugins/validate.client.js',
     '@/plugins/scroll-to.client.js',
+    '@/plugins/tooltip.client.js',
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -65,9 +84,14 @@ export default {
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
     progress: false,
-    retry: { retries: 3 },
+    retry: { retries: 1 },
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
+
+  server: {
+    // default: localhost
+    host: '0',
+  },
 }

@@ -119,9 +119,8 @@ h1 {
 
 .table-container {
   width: 100%;
-  padding: 3rem 4rem;
+  padding: 3rem 1.5rem;
   margin: 0 auto;
-  background: var(--white);
 }
 
 .header-container {

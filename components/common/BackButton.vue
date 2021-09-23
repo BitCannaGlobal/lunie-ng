@@ -17,8 +17,8 @@ export default {
   width: auto;
   font-size: 14px;
   background: transparent;
-  color: #7a88b8;
-  border: 2px solid rgb(122, 136, 184, 0.1);
+  color: var(--white);
+  border: 2px solid var(--white);
   border-radius: var(--border-radius);
   cursor: pointer;
   display: flex;
@@ -31,6 +31,6 @@ export default {
 }
 
 .back-button:hover {
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: var(--gray-1200);
 }
 </style>

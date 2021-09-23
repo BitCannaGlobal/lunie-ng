@@ -46,9 +46,8 @@ export default {
 .container {
   padding: 1rem 0 0;
   margin: 3rem 0;
-  box-shadow: 0 0 3px 0 var(--gray-400);
   border-radius: var(--border-radius);
-  background: var(--white);
+  background: var(--gray-1200);
 }
 
 .timeline {

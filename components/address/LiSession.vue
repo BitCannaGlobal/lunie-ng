@@ -46,7 +46,6 @@ export default {
   background: var(--app-fg);
   border-radius: var(--border-radius);
   transition: background-color 0.2s ease;
-  box-shadow: 0 0 1px 0 var(--gray-500);
 }
 
 .li-session.card {
@@ -94,6 +93,7 @@ export default {
 
 .icon i {
   font-size: 1.25rem;
+  color: var(--green-1000);
 }
 
 .title {
@@ -121,8 +121,7 @@ export default {
 }
 
 .material-icons.circle {
-  border: 2px solid var(--dim);
-  color: var(--dim);
+  color: var(--green-1000);
   border-radius: 50%;
   padding: 0.5rem;
 }

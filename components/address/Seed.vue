@@ -75,7 +75,7 @@ export default {
 .seed-table td {
   text-align: center;
   width: 16.6666666666667%;
-  background-color: var(--gray-100);
+  background-color: var(--gray-1200);
   border: 1px solid var(--gray-200);
   padding: 0.5rem 0.1rem 0.5rem 0.1rem;
   box-shadow: 0 0 2px 0 var(--gray-300);

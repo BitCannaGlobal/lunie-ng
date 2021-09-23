@@ -146,9 +146,8 @@ export default {
 .proposal {
   margin: 2rem;
   padding: 1.5rem 2rem;
-  box-shadow: 0 0 3px 0 var(--gray-400);
   border-radius: var(--border-radius);
-  background: var(--white);
+  background: var(--gray-1100);
   max-width: 1024px;
 }
 

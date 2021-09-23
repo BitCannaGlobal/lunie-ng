@@ -50,13 +50,12 @@ export default {
   display: flex;
   align-items: center;
   font-size: var(--text-xs);
-  color: var(--gray-500);
+  color: var(--white);
   justify-content: space-between;
   padding: 0.5rem 0.75rem;
   margin: 1rem;
   border-radius: var(--border-radius);
   background: var(--app-nav-hover);
-  box-shadow: 0 0 1px 0 var(--gray-700);
 }
 
 .status {

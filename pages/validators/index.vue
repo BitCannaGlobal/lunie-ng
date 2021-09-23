@@ -104,9 +104,8 @@ export default {
   flex-direction: row;
   margin: 1.5rem;
   padding: 1.5rem;
-  box-shadow: 0 0 3px 0 var(--gray-400);
   border-radius: var(--border-radius);
-  background: var(--white);
+  background: var(--gray-1100);
 }
 
 .searchField {
@@ -122,31 +121,37 @@ export default {
   max-width: 300px;
 }
 
-.toggle-button {
+.toggles .toggle-button {
   min-width: 100px;
   border-radius: 0;
-  background: var(--white);
+  background: var(--gray-1200);
   color: var(--txt);
   border-color: var(--input-bc);
 }
 
 .toggle-button.active {
-  background: var(--blue-200);
+  background: var(--green-1000);
+  border: none;
 }
 
 .toggle-button:last-child {
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
   margin-left: -1px;
+  border: none;
 }
 
 .toggle-button:first-child {
   border-radius: var(--border-radius) 0 0 var(--border-radius);
   margin-right: -1px;
+  border: none;
 }
 
-.toggles .toggle-button:hover:not(:disabled) {
-  background: var(--blue-100);
-  border-color: var(--input-bc);
+.toggles .toggle-button.active:hover:not(:disabled) {
+  background: var(--green-1000);
+}
+
+.toggles .toggle-button.secondary:hover:not(:disabled) {
+  background: var(--gray-1200);
 }
 
 .filterOptions {

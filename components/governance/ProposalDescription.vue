@@ -35,23 +35,21 @@ h4 {
   padding: 2rem;
   margin: 2rem 0;
   width: 100%;
-  box-shadow: 0 0 3px 0 var(--gray-400);
   border-radius: var(--border-radius);
-  background: var(--white);
+  background: var(--gray-1200);
 }
 
 .description {
   white-space: pre-wrap;
   color: var(--txt);
   width: 100%;
-  box-shadow: 0 0 3px 0 var(--gray-400);
   border-radius: var(--border-radius);
 }
 
 pre {
   font-family: 'Menlo', 'Consolas', monospace;
   border-radius: 0.25rem;
-  background: var(--app-nav-hover);
+  background: var(--gray-1100);
   color: var(--gray-500);
   font-size: 14px;
   padding: 1rem;

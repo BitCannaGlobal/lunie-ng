@@ -467,6 +467,7 @@ export default {
     },
     refreshData() {
       this.$store.dispatch('data/refresh')
+      this.$store.dispatch('data/refreshSession')
     },
     getExternalSessionMessage(sessionType) {
       switch (sessionType) {
@@ -486,7 +487,7 @@ export default {
 
 <style scoped>
 .action-modal {
-  background: var(--app-fg);
+  background: var(--gray-1100);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -505,6 +506,10 @@ export default {
   border-top: 2px solid var(--bc-dim);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   outline: none;
+}
+
+.action-modal-form .card {
+  background: var(--gray-1200);
 }
 
 .action-modal-header {

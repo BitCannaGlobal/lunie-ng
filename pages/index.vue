@@ -14,7 +14,7 @@ export default {
 </script>
 <style scoped>
 .portfolio {
-  background: var(--gray-100);
+  background: var(--gray-1200);
   min-height: 100vh;
 }
 </style>

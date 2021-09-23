@@ -265,7 +265,15 @@ export function getMessageType(type) {
       return lunieMessageTypes.RESTAKE
     case 'cosmos.staking.v1beta1.MsgUndelegate':
       return lunieMessageTypes.UNSTAKE
+    case 'cosmos.staking.v1beta1.MsgEditValidator':
+      return lunieMessageTypes.EDIT_VALIDATOR
+    case 'cosmos.staking.v1beta1.MsgCreateValidator':
+      return lunieMessageTypes.CREATE_VALIDATOR
     case 'cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward':
+      return lunieMessageTypes.CLAIM_REWARDS
+    case 'cosmos.distribution.v1beta1.MsgFundCommunityPool':
+      return lunieMessageTypes.FUND_COMMUNITY_POOL
+    case 'cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission':
       return lunieMessageTypes.CLAIM_REWARDS
     case 'cosmos.gov.v1beta1.MsgSubmitProposal':
       return lunieMessageTypes.SUBMIT_PROPOSAL
@@ -273,6 +281,10 @@ export function getMessageType(type) {
       return lunieMessageTypes.VOTE
     case 'cosmos.gov.v1beta1.MsgDeposit':
       return lunieMessageTypes.DEPOSIT
+    case 'cosmos.slashing.v1beta1.MsgUnjail':
+      return lunieMessageTypes.SUBMIT_PROPOSAL
+    case 'ibc.applications.transfer.v1.MsgTransfer':
+      return lunieMessageTypes.IBC
     default:
       return lunieMessageTypes.UNKNOWN
   }
@@ -369,8 +381,8 @@ export function claimRewardsAmountReducer(transaction) {
 export function submitProposalDetailsReducer(message) {
   return {
     proposalType: message.content.type,
-    proposalTitle: message.content.value.title,
-    proposalDescription: message.content.value.description,
+    proposalTitle: message.content.title,
+    proposalDescription: message.content.description,
     initialDeposit: coinReducer(message.initial_deposit[0]),
   }
 }
@@ -621,7 +633,7 @@ export function getValidatorUptimePercentage(validator, signedBlocksWindow) {// 
   }
 }
 
-export function validatorReducer(validator, annualProvision, supply, pool) {
+export function validatorReducer(validator, tokensTotal) {
   const statusInfo = getValidatorStatus(validator)
   let websiteURL = validator.description.website
   if (!websiteURL || websiteURL === '[do-not-modify]') {
@@ -630,10 +642,10 @@ export function validatorReducer(validator, annualProvision, supply, pool) {
     websiteURL = `https://` + websiteURL
   }
 
-  const pctCommission = new BigNumber(1 - validator.commission.commission_rates.rate)
-  const provision = new BigNumber(annualProvision)
-  const bonded = new BigNumber(pool.pool.bonded_tokens)
-  const expectedRewards = pctCommission.times(provision.div(bonded))
+  // const pctCommission = new BigNumber(1 - validator.commission.commission_rates.rate)
+  // const provision = new BigNumber(annualProvision)
+  // const bonded = new BigNumber(pool.pool.bonded_tokens)
+  // const expectedRewards = pctCommission.times(provision.div(bonded))
 
   return {
     id: validator.operator_address,
@@ -644,7 +656,7 @@ export function validatorReducer(validator, annualProvision, supply, pool) {
     website: websiteURL,
     identity: validator.description.identity,
     name: validator.description.moniker,
-    votingPower: (validator.tokens / supply).toFixed(6),
+    votingPower: (validator.tokens / tokensTotal).toFixed(6),
     startHeight: validator.signing_info
       ? validator.signing_info.start_height
       : undefined,
@@ -660,9 +672,9 @@ export function validatorReducer(validator, annualProvision, supply, pool) {
     maxChangeCommission: validator.commission.commission_rates.max_change_rate,
     status: statusInfo.status,
     statusDetailed: statusInfo.status_detailed,
-    expectedReturns: annualProvision
-      ? expectedRewards
-      : undefined,
+    // expectedReturns: annualProvision
+      // ? expectedRewards
+      // : undefined,
   }
 }
 

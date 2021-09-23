@@ -82,6 +82,9 @@ export default {
       await this.signIn(account)
       this.$router.push('/')
     },
+    connect() {
+      this.$store.dispatch('keplr/init')
+    },
   },
 }
 </script>

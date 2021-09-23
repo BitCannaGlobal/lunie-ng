@@ -265,14 +265,14 @@ export const actions = {
       const selfStake = await api.getSelfStake(validator)
       return selfStake
     } catch (err) {
-      commit(
-        'notifications/add',
-        {
-          type: 'danger',
-          message: 'Getting validator self stake failed:' + err.message,
-        },
-        { root: true }
-      )
+      // commit(
+      //   'notifications/add',
+      //   {
+      //     type: 'danger',
+      //     message: 'Getting validator self stake failed:' + err.message,
+      //   },
+      //   { root: true }
+      // )
       return 0
     }
   },

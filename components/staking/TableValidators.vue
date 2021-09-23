@@ -78,10 +78,10 @@ export default {
           title: `Name`,
           value: `smallName`,
         },
-        {
-          title: `Rewards`,
-          value: `expectedReturns`,
-        },
+        // {
+        //   title: `Rewards`,
+        //   value: `expectedReturns`,
+        // },
         {
           title: `Voting Power`,
           value: `votingPower`,

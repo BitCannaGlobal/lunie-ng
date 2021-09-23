@@ -29,7 +29,7 @@ export default {
 .warning {
   border: 2px solid var(--orange-600);
   border-radius: var(--border-radius);
-  background: var(--orange-100);
+  background: var(--gray-1100);
   padding: 1rem;
 }
 

@@ -43,15 +43,15 @@ export default {
   height: 2.25rem;
   font-size: 14px;
   background: transparent;
-  color: #7a88b8;
-  border: 2px solid rgb(122, 136, 184, 0.1);
+  color: var(--white);
+  border: 2px solid var(--white);
   cursor: pointer;
   width: 3rem;
   position: relative;
 }
 
 .share-button:hover {
-  background-color: var(--bc);
+  background-color: var(--gray-1200);
 }
 
 .check-icon {

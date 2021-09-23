@@ -11,7 +11,7 @@
       :loaded="undelegationsLoaded"
     >
       <StakingValidatorRow
-        v-for="(undelegation, index) in undelegations"
+        v-for="(undelegation, index) in sortedEnrichedValidators"
         :key="undelegation.validatorAddress + undelegation.startHeight"
         :index="index"
         :validator="undelegation.validator"
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { orderBy } from 'lodash'
 import { mapState } from 'vuex'
 import network from '~/network'
 
@@ -36,6 +37,17 @@ export default {
   }),
   computed: {
     ...mapState('data', ['undelegations', 'undelegationsLoaded']),
+    sortedEnrichedValidators() {
+      const orderedValidators = orderBy(
+        this.undelegations.map((validator) => ({
+          ...validator,
+          smallName: validator.name ? validator.name.toLowerCase() : '',
+        })),
+        [this.sort.property],
+        [this.sort.order]
+      )
+      return orderedValidators
+    },
     balances() {
       return this.undelegations.map((undelegation) => {
         return {
@@ -79,8 +91,8 @@ export default {
 .table-container {
   margin: 0 auto;
   width: 100%;
-  padding: 3rem 4rem;
-  background: var(--gray-200);
+  padding: 3rem 1.5rem;
+  background: var(--gray-1200);
 }
 
 @media screen and (max-width: 1023px) {

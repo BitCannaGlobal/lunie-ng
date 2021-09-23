@@ -52,7 +52,7 @@ export default {
     },
     iconColor: {
       type: String,
-      default: `var(--warning)`,
+      default: `var(--green-1000)`,
     },
   },
 }
@@ -64,9 +64,8 @@ export default {
   display: flex;
   align-items: center;
   margin: 1rem;
-  box-shadow: 0 0 3px 0 var(--gray-400);
   border-radius: var(--border-radius);
-  background: var(--white);
+  background: var(--gray-1100);
 }
 
 .icon {
@@ -76,7 +75,7 @@ export default {
 .icon i.material-icons {
   font-size: 2rem;
   color: var(--white);
-  background: var(--warning);
+  background: var(--green-1000);
   padding: 0.5rem;
   border-radius: 50%;
 }

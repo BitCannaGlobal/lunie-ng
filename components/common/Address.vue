@@ -6,9 +6,10 @@
       class="address"
     >
       <span>{{ address | formatAddress }}</span>
-      <div :class="{ active: copySuccess }" class="icon-container">
-        <i class="material-icons notranslate success">check</i>
-      </div>
+    </div>
+    <div :class="{ active: copySuccess }" class="copy-tooltip hide">
+      <div class="arrow"></div>
+      <div class="inner">Address Copied!</div>
     </div>
   </div>
 </template>
@@ -51,7 +52,6 @@ export default {
 
 .address {
   white-space: nowrap;
-  display: inline-flex;
   align-items: center;
   cursor: pointer;
   color: var(--link);
@@ -61,27 +61,36 @@ export default {
   color: var(--link-hover);
 }
 
-.icon-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon-container .success {
-  opacity: 0;
-  transition: opacity 250ms ease;
-}
-
-.icon-container.active .success {
-  opacity: 1;
-}
-
 .copyable-address i {
   font-size: 14px;
   padding-left: 0.25rem;
 }
 
-.icon-container i.success {
-  color: var(--success);
+.copy-tooltip {
+  position: absolute;
+  opacity: 0;
+}
+
+.copy-tooltip .inner {
+  border-radius: 5px;
+  background: var(--success);
+  color: white;
+  padding: 7px 10px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.copy-tooltip .arrow {
+  left: 55px;
+  width: 13px;
+  height: 13px;
+  background: var(--success);
+  transform: rotate(45deg);
+  top: 4px;
+  position: absolute;
+}
+
+.copy-tooltip.active {
+  opacity: 1;
 }
 </style>

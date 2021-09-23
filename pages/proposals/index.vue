@@ -69,12 +69,12 @@ export default {
 </script>
 <style scoped>
 .proposals {
-  padding: 0 4rem 3rem;
+  padding: 0 1.5rem 3rem;
 }
 
 h3 {
   font-size: 24px;
-  color: var(--gray-800);
+  color: var(--white);
   font-weight: 600;
   padding: 3rem 0 1.5rem;
 }
@@ -96,13 +96,16 @@ h4 {
   padding: 1rem 1.5rem;
   width: 100%;
   white-space: nowrap;
-  box-shadow: 0 0 3px 0 var(--gray-400);
   border-radius: var(--border-radius);
-  background: var(--white);
+  background: var(--gray-1100);
 }
 
 .data-row div:first-child {
   margin-right: 1rem;
+}
+
+.proposals .card {
+  margin: 0;
 }
 
 @media screen and (max-width: 1023px) {

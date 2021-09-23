@@ -139,6 +139,10 @@ export default {
   margin-bottom: 1rem;
 }
 
+.session .card {
+  background: var(--gray-1200);
+}
+
 .copy-feature-link {
   display: initial;
   font-size: 0.8rem;

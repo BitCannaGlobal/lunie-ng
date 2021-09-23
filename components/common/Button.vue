@@ -1,5 +1,15 @@
 <template>
+  <a
+    v-if="link"
+    class="button"
+    rel="nofollow noreferrer noopener"
+    target="_blank"
+    :href="href"
+  >
+    {{ value }}
+  </a>
   <button
+    v-else
     class="button"
     :class="{
       secondary: type === `secondary`,
@@ -46,6 +56,10 @@ export default {
       type: String,
       default: null,
     },
+    href: {
+      type: String,
+      default: null,
+    },
     type: {
       type: String,
       default: null,
@@ -55,6 +69,10 @@ export default {
       default: false,
     },
     disabled: {
+      type: Boolean,
+      default: false,
+    },
+    link: {
       type: Boolean,
       default: false,
     },
@@ -74,11 +92,10 @@ export default {
   border-radius: var(--border-radius);
   cursor: pointer;
   background: var(--primary);
-  border: 2px solid var(--primary);
   transition: all 0.5s ease;
   white-space: nowrap;
   outline: none;
-  box-shadow: 0 0 3px 0 var(--gray-400);
+  border: 2px solid var(--primary);
 }
 
 .button:hover {
@@ -88,14 +105,11 @@ export default {
 
 .button:disabled {
   opacity: 0.6;
-  background: var(--dim);
-  border-color: var(--dim);
   cursor: default;
 }
 
 .button:disabled:hover {
-  background: var(--dim);
-  border-color: var(--dim);
+  background: var(--primary);
 }
 
 .button.secondary.active {
@@ -106,7 +120,7 @@ export default {
 .button.secondary {
   color: var(--bright);
   background: transparent;
-  border-color: var(--input-bc);
+  border: 2px solid var(--dim);
 }
 
 .button.secondary:disabled {
@@ -116,7 +130,7 @@ export default {
 }
 
 .button.secondary:hover:not(:disabled) {
-  background: var(--gray-200);
+  background: var(--gray-1300);
 }
 
 .addon-max {

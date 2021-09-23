@@ -20,7 +20,6 @@ export default {
 .status {
   text-transform: uppercase;
   font-size: 10px;
-  font-weight: 700;
   padding: 2px 6px;
   border-radius: var(--border-radius);
   width: fit-content;
@@ -28,28 +27,28 @@ export default {
 }
 
 .status.inactive {
-  background: var(--orange-200);
-  color: var(--orange-800);
+  color: var(--white);
+  border: 1px solid var(--orange-800);
 }
 
 .status.passed,
 .status.active {
-  background: var(--green-200);
-  color: var(--green-800);
+  color: var(--white);
+  border: 1px solid var(--green-1000);
 }
 
 .status.rejected {
-  background: var(--red-200);
-  color: var(--red-800);
+  color: var(--white);
+  border: 1px solid var(--red-800);
 }
 
 .status.voting {
-  background: var(--teal-200);
-  color: var(--teal-800);
+  color: var(--white);
+  border: 1px solid var(--teal-800);
 }
 
 .status.depositing {
-  background: var(--purple-200);
-  color: var(--purple-800);
+  color: var(--white);
+  border: 1px solid var(--purple-800);
 }
 </style>

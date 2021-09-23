@@ -44,6 +44,18 @@
         <h2 class="app-menu-title">Transactions</h2>
         <i class="material-icons notranslate">chevron_right</i>
       </nuxt-link>
+      <template v-if="session && network.swapEnabled">
+        <nuxt-link
+          class="app-menu-item"
+          to="/swap"
+          exact="exact"
+          title="Swap"
+          @click.native="handleClick()"
+        >
+          <h2 class="app-menu-title">Swap</h2>
+          <i class="material-icons notranslate">chevron_right</i>
+        </nuxt-link>
+      </template>
     </div>
     <div>
       <CommonConnectedNetwork @close-menu="handleClick" />
@@ -52,8 +64,17 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import network from '~/common/network'
+
 export default {
   name: `CommonAppMenu`,
+  data: () => ({
+    network,
+  }),
+  computed: {
+    ...mapState(['session']),
+  },
   methods: {
     handleClick() {
       this.$emit(`close`)
@@ -70,7 +91,7 @@ export default {
   flex-flow: column;
   position: relative;
   height: 100%;
-  padding-top: 3rem;
+  padding-top: 1rem;
 }
 
 .app-menu-item:hover {
@@ -85,9 +106,13 @@ export default {
   margin: 0.5rem 1rem;
   font-weight: 400;
   font-size: 14px;
-  color: var(--gray-500);
+  color: var(--white);
   border-radius: var(--border-radius);
   transition: all 0.5s ease;
+}
+
+.app-menu .app-menu-item i {
+  color: var(--green-1000);
 }
 
 .app-menu .app-menu-item--link:hover {
@@ -96,8 +121,7 @@ export default {
 
 .app-menu .app-menu-item.nuxt-link-active {
   background: var(--app-nav-hover);
-  box-shadow: 0 0 1px 0 var(--gray-700);
-  color: var(--gray-100);
+  color: var(--white);
 }
 
 @media screen and (max-width: 1023px) {

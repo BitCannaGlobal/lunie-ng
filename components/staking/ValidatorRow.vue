@@ -22,21 +22,17 @@
           <div v-if="delegation.amount > 0">
             <h4>
               {{ delegation.amount | bigFigureOrShortDecimals }}
-            </h4>
-            <h5
-              v-if="
-                rewards.find(
-                  (reward) =>
-                    reward.denom === stakingDenom && reward.amount > 0.000001
-                )
-              "
-            >
               <span
-                >+{{
-                  filterStakingDenomReward() | bigFigureOrShortDecimals
-                }}</span
+                v-if="
+                  rewards.find(
+                    (reward) =>
+                      reward.denom === stakingDenom && reward.amount > 0.000001
+                  )
+                "
               >
-            </h5>
+                +{{ filterStakingDenomReward() | bigFigureOrShortDecimals }}
+              </span>
+            </h4>
           </div>
         </template>
         <template v-else>
@@ -45,13 +41,13 @@
       </div>
     </td>
     <template v-if="!undelegation">
-      <td class="cell">
+      <!-- <td class="cell">
         {{
           validator.expectedReturns
             ? bigFigureOrPercent(validator.expectedReturns)
             : `--`
         }}
-      </td>
+      </td> -->
       <td class="cell">
         {{ validator.votingPower | bigFigureOrPercent }}
       </td>
@@ -138,13 +134,13 @@ h5 {
   font-size: var(--text-xs);
 }
 
-h5 span {
+h4 span {
   color: var(--success);
 }
 
 .validator-row:hover {
   cursor: pointer;
-  background: var(--gray-100);
+  background: var(--gray-1200);
   color: var(--bright);
 }
 

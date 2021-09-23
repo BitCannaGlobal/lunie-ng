@@ -242,16 +242,14 @@ export default {
 .validator-container {
   margin: 2rem;
   padding: 1.5rem 2rem;
-  box-shadow: 0 0 3px 0 var(--gray-400);
   border-radius: var(--border-radius);
-  background: var(--white);
+  background: var(--gray-1100);
   max-width: 1024px;
 }
 
 section {
-  box-shadow: 0 0 3px 0 var(--gray-400);
   border-radius: var(--border-radius);
-  background: var(--white);
+  background: var(--gray-1200);
   margin: 1rem 0;
 }
 
@@ -329,7 +327,7 @@ section div {
 }
 
 section:not(.row) div {
-  border-bottom: 1px solid var(--gray-200);
+  border-bottom: 2px solid var(--gray-1100);
 }
 
 .row {

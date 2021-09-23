@@ -48,12 +48,11 @@ export default {
   padding: 0.5rem 0.75rem;
   border-radius: var(--border-radius);
   background: var(--app-nav-hover);
-  box-shadow: 0 0 1px 0 var(--gray-700);
 }
 
 h4 {
   font-size: var(--text-xs);
-  color: var(--gray-500);
+  color: var(--white);
 }
 
 .container .button.secondary {
@@ -68,14 +67,14 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--link-hover);
+  color: var(--white);
   font-size: var(--text-base);
-  border: 2px solid var(--gray-800);
+  border: 2px solid var(--green-1000);
 }
 
 .icon-button:hover {
   cursor: pointer;
-  color: var(--blue-700);
+  color: var(--green-1100);
 }
 
 .button.menu-button {

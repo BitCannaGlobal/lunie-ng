@@ -101,13 +101,10 @@ export default {
 
 <style scoped>
 .field {
-  background: var(--white);
-  border: 2px solid var(--input-bc);
-  border-radius: var(--border-radius);
+  background: var(--gray-1200);
   color: var(--bright);
   display: block;
   padding: 0.5rem 0.75rem;
-  box-shadow: 0 0 3px 0 var(--gray-400);
   font-size: var(--text-sm);
 }
 
@@ -116,7 +113,7 @@ export default {
 }
 
 .field:focus {
-  border: 2px solid var(--link);
+  border-bottom: 2px solid var(--link);
   outline: none;
 }
 
@@ -134,8 +131,8 @@ export default {
 }
 
 .add-on {
-  background: var(--gray-300);
-  color: var(--gray-600);
+  background: var(--green-1000);
+  color: var(--white);
   font-size: var(--text-sm);
   padding: 0 0.5rem;
   border-radius: 2px;
@@ -147,6 +144,18 @@ select.field {
 
   /* needed to overwrite browser defaults */
   max-height: 37px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  border: none;
+}
+
+select::-ms-expand {
+  display: none;
 }
 
 input + select {
@@ -167,6 +176,7 @@ textarea {
   width: 100%;
   min-height: 4rem;
   resize: vertical;
+  border: none;
 }
 
 input {
@@ -189,8 +199,11 @@ input[disabled].field,
 textarea[readonly].field,
 textarea[disabled].field,
 .input-row.disabled {
-  background: var(--gray-300);
-  border: 2px solid var(--gray-400);
   color: var(--gray-600);
+}
+
+.field.disabled input {
+  color: var(--white);
+  background: var(--gray-1200);
 }
 </style>

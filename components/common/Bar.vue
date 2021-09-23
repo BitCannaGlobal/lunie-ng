@@ -72,34 +72,33 @@ export default {
   width: 100%;
   padding: 0.75rem 1rem;
   border-radius: var(--border-radius);
-  background-color: transparent;
+  background-color: var(--gray-1100);
   font-size: 14px;
   font-weight: 400;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: black;
+  color: var(--white);
 }
 
 .bar.primary {
-  background-color: var(--primary);
+  border: 2px solid var(--primary);
 }
 
 .bar.success {
-  background-color: var(--success);
+  border: 2px solid var(--success);
 }
 
 .bar.warning {
-  background-color: var(--warning);
+  border: 2px solid var(--warning);
 }
 
 .bar.danger {
   border: 2px solid var(--danger);
-  background-color: var(--red-100);
 }
 
 .bar.info {
-  background-color: var(--info);
+  border: 2px solid var(--info);
 }
 
 .bar .link {

@@ -1,39 +1,43 @@
 export default {
-  id: 'cosmos-hub-mainnet',
-  name: 'Cosmos Mainnet',
+  id: 'bitcanna-1',
+  name: 'BitCanna Testnet',
   description:
-    'Cosmos is a network of independent parallel blockchains, powered by BFT consensus algorithms like Tendermint.',
+    'BitCanna is a decentralized network, powered by BFT consensus algorithms like Tendermint consensus.',
   logo: `logo.svg`,
-  website: 'https://cosmos.network',
+  website: 'https://www.bitcanna.io',
   // apiURL: 'http://localhost:8010/proxy',
-  apiURL: 'https://api.cosmos.network',
-  rpcURL: 'https://rpc.cosmos.network',
-  minBlockHeight: 5200792, // actually 5200791, but it has the wrong block time.
-  stakingDenom: 'ATOM',
+  apiURL: 'https://cosmos-testnet.bitcanna.io',
+  rpcURL: 'httsp://rpc-testnet.bitcanna.io',
+  explorerURL: 'https://testnet-explorer.bitcanna.io',
+  bitcannaExplorerURL: 'https://explorer.bitcanna.io',
+  exchangeApiUrl: 'https://bcna-payment.dmosrv.com',
+  // minBlockHeight: 5200792, // actually 5200791, but it has the wrong block time.
+  stakingDenom: 'BCNA',
   coinLookup: [
     {
-      viewDenom: 'ATOM',
-      chainDenom: 'uatom',
+      viewDenom: 'BCNA',
+      chainDenom: 'ubcna',
       chainToViewConversionFactor: 1e-6,
-      icon: `currencies/atom.png`,
+      icon: `currencies/bcna.jpg`,
     },
   ],
-  addressPrefix: 'cosmos',
-  validatorAddressPrefix: 'cosmosvaloper',
-  validatorConsensusaddressPrefix: 'cosmosvalcons', // needed to map validators from staking queries to the validator set
+  addressPrefix: 'bcna',
+  validatorAddressPrefix: 'bcnavaloper',
+  validatorConsensusaddressPrefix: 'bcnavalcons', // needed to map validators from staking queries to the validator set
   HDPath: `m/44'/118'/0'/0/0`,
-  lockUpPeriod: `3 days`,
+  lockUpPeriod: `21 days`,
   fees: {
     default: {
-      gasEstimate: 350000,
+      gasEstimate: 800000,
       feeOptions: [
         {
-          denom: 'ATOM',
-          amount: 0.001,
+          denom: 'BCNA',
+          amount: 0.01,
         },
       ],
     },
   },
   icon: `https://lunie.fra1.digitaloceanspaces.com/network-icons/cosmos.png`,
+  swapEnabled: true,
   localSigning: true, // this is only to be used as a developer tool - never deployed in production or for mainnet chains
 }
