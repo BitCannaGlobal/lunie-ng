@@ -94,10 +94,9 @@ export async function createSignBroadcast({
 
   const broadcastBody = {
     tx: signedTx,
-    mode: 'sync', // if we use async we don't wait for checks on the tx to have passed so we don't get errors
   }
   const broadcastResult = await axios
-    .post(`${network.apiURL}/txs`, broadcastBody)
+    .post(`${network.apiURL}/cosmos/tx/v1beta1/txs`, broadcastBody)
     .then((res) => res.data)
   assertIsBroadcastTxSuccess(broadcastResult)
 
@@ -138,11 +137,13 @@ export async function pollTxInclusion(txHash, iteration = 0) {
   const MAX_POLL_ITERATIONS = 30
   let txFound = false
   try {
-    await fetch(`${network.apiURL}/txs/${txHash}`).then((res) => {
-      if (res.status === 200) {
-        txFound = true
+    await fetch(`${network.apiURL}/cosmos/tx/v1beta1/txs/${txHash}`).then(
+      (res) => {
+        if (res.status === 200) {
+          txFound = true
+        }
       }
-    })
+    )
   } catch (err) {
     // ignore error
   }
